@@ -7,6 +7,13 @@ from rest_framework import serializers
 from .models import Cat, Owner, Achievement, AchievementCat, CHOICES
 
 
+class CatListSerializer(serializers.ModelSerializer):
+    color = serializers.ChoiceField(choices=CHOICES)
+
+    class Meta:
+        model = Cat
+        fields = ('id', 'name', 'color')
+
 class AchievementSerializer(serializers.ModelSerializer):
     achievement_name = serializers.CharField(source='name')
 
